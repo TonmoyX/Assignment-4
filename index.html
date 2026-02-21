@@ -4,13 +4,83 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Geist:wght@100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Outfit:wght@100..900&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
   </head>
-  <body>
-  
-    <h1>Helo</h1>
-    <h1>Helo</h1>
-    <h1>Helo</h1>
-    <h1>Helo</h1>
+  <body class="bg-[#F8FAFC] font-[Geist]">
+  <header class="w-[1110px] mx-auto border-b-2 border-[#E6E7E9] pb-[30px] pt-[60px]">
+    <h1 class="  text-[#002C5C] font-bold text-[2.5rem]">Job Application Tracker</h1>
+    <div class="gap-4 flex pt-[20px]">
+        <div class="bg-white w-[359.33px] px-4 py-[20px] rounded-[8px]">
+            <button class="text-[14px] " >Total</button>
+            <p class="text-[#002C5C] font-bold text-[1.5rem]">0</p>
+        </div>
+        <div class="bg-white w-[359.33px] px-4 py-[20px] rounded-[8px]">
+            <button >Interview</button>
+            <p class="text-[#10B981] font-bold text-[1.5rem]">0</p>
+        </div>
+        <div class="bg-white w-[359.33px] px-4 py-[20px] rounded-[8px]">
+            <button >Rejected</button>
+            <p class="text-[#EF4444] font-bold text-[1.5rem]">0</p>
+        </div>
+    </div>
+  </header>
+
+  <main class="w-[1110px] mx-auto pt-[30px]">
+    <section>
+    <div class="flex justify-between">
+        <h1 class="text-[#002C5C] text-[26px] font-semibold">Available Jobs</h1>
+        <p class="text-[#64748B]">0 jobs</p>
+    </div>
+
+    <div class="flex gap-2 mt-[24px]">
+        <button class="bg-[#3B82F6] py-[10px] px-[32px] rounded-[8px] text-[12px] font-semibold text-white">All</button>
+        <button class="bg-white py-[10px] px-[32px] rounded-[8px] text-[12px] font-semibold text-[#64748B]">Interview</button>
+        <button class="bg-white py-[10px] px-[32px] rounded-[8px] text-[12px] font-semibold text-[#64748B]">Rejected</button>
+    </div>
+</section>
+
+
+
+    <section class="allCards">
+        <div class="card flex justify-between p-8 mt-4 bg-white rounded-[8px]">
+          <div>
+          
+            <div>
+            <h1 class="text-[#002C5C] text-[26px] font-semibold">Mobile First Corp</h1>
+            <p class="text-[#64748B] text-[22px]">React Native Developer</p>
+          </div>
+            <h1 class="text-[#64748B] mt-[20px]">Remote &nbsp;&nbsp; • &nbsp;&nbsp;Full-time&nbsp;&nbsp; • &nbsp;&nbsp;$130,000  -  $175,000</h1>
+
+             <div class="">
+            <h1 class=" w-[113px] rounded-[4px] text-[14px] text-[#002C5C] font-medium bg-[#002C5C]/10 py-[8px] px-[12px] mt-[20px]">Not Applied</h1>
+            <p class="mt-[8px] text-[#323B49]text-[1.1rem]">Build cross-platform mobile applications using React Native. Work on products used by millions of users worldwide.</p>
+        </div>
+
+
+        <div>
+            <button>INTERVIEW</button>
+            <button>REJECTED</button>
+        </div>
+        </div>
+
+        <div>
+            <button>
+                <h1 class="hover:text-red-700 hover:border-red-700 bg-white p-1 rounded-full text-[1.5rem] text-[#64748B] border-2 border-[#64748B]"><i class="fa-regular fa-trash-can"></i></h1>
+            </button>
+        </div>
+        </div>
+    </section>
+
+
+
+  </main>
     <script src="script.js"></script>
   </body>
 </html>
