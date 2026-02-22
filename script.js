@@ -122,7 +122,7 @@ mainContainer.addEventListener('click', function(e){
     }
     else if(e.target.classList.contains('dltBtn')){
         const parenNode = e.target.parentNode.parentNode.parentNode.parentNode;
-        parenNode.remove() ;
+        parenNode.remove();
     }
 })
 
