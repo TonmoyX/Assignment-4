@@ -42,13 +42,10 @@ function toggle(id){
         allCardSection.classList.add('hidden');
         filterSection.classList.remove('hidden')
         renderInter()
-
     } else if (id == 'all-btn') {
         allCardSection.classList.remove('hidden');
         filterSection.classList.add('hidden');
         noAvailableJob.classList.add('hidden');
-
-
     } else if (id == 'reject-btn') {
         allCardSection.classList.add('hidden');
         filterSection.classList.remove('hidden')
@@ -132,7 +129,6 @@ mainContainer.addEventListener('click', function(e){
         parenNode.remove();
     }
 })
-
 function renderInter(){
      filterSection.innerHTML = '';
 
