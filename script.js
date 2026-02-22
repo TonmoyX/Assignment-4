@@ -42,9 +42,13 @@ function toggle(id){
         allCardSection.classList.add('hidden');
         filterSection.classList.remove('hidden')
         renderInter()
+
     } else if (id == 'all-btn') {
         allCardSection.classList.remove('hidden');
-        filterSection.classList.add('hidden')
+        filterSection.classList.add('hidden');
+        noAvailableJob.classList.add('hidden');
+
+
     } else if (id == 'reject-btn') {
         allCardSection.classList.add('hidden');
         filterSection.classList.remove('hidden')
@@ -65,6 +69,8 @@ mainContainer.addEventListener('click', function(e){
         const note = parenNode.querySelector('.note').innerText
 
         parenNode.querySelector('.status').innerText = 'Interview';
+        parenNode.querySelector('.status').classList.remove('bg-[#002C5C]/10', 'text-[#002C5C]');   
+        parenNode.querySelector('.status').classList.add('bg-green-500', 'text-[#ffff]');
 
         const cardInfo = {
             company, 
@@ -96,6 +102,8 @@ mainContainer.addEventListener('click', function(e){
         const note = parenNode.querySelector('.note').innerText
 
         parenNode.querySelector('.status').innerText = 'Reject';
+        parenNode.querySelector('.status').classList.remove('bg-green-500', 'text-[#ffff]', 'bg-[#002C5C]/10');
+        parenNode.querySelector('.status').classList.add('bg-red-500', 'text-[#ffff]', 'bg-[#002C5C]/10');
 
         const cardInfo = {
             company, 
@@ -127,74 +135,84 @@ mainContainer.addEventListener('click', function(e){
 
 function renderInter(){
      filterSection.innerHTML = '';
-     for (let inter of interList) {
-        console.log(inter);
 
-        let div = document.createElement('div');
+     if(interList.length < 1){
+        noAvailableJob.classList.remove('hidden');
+     } else {
+        noAvailableJob.classList.add('hidden');
+        for (let inter of interList) {
+           console.log(inter);
 
-         div.className = 'card flex justify-between mt-4 p-8 bg-white rounded-[8px]'
-        div.innerHTML = `
-        <div>
-            <div>
-            <h1 class="companyName  text-[#002C5C] text-[26px] font-semibold">${inter.company}</h1>
-            <p class="designation  text-[#64748B] text-[22px]">${inter.designation}</p>
-          </div>
-            <h1 class="locationSalary  text-[#64748B] mt-[20px]">${inter.locationSalary}</h1>
+           let div = document.createElement('div');
 
-             <div>
-            <h1 class="status w-[113px] rounded-[4px] text-[14px] text-[#002C5C] font-medium bg-[#002C5C]/10 py-[8px] px-[12px] mt-[20px]">${inter.status}</h1>
-            <p class="note  mt-[8px] text-[#323B49]text-[1.1rem]">${inter.note}</p>
-        </div>
+            div.className = 'card flex justify-between mt-4 p-8 bg-white rounded-[8px]'
+           div.innerHTML = `
+           <div>
+               <div>
+               <h1 class="companyName  text-[#002C5C] text-[26px] font-semibold">${inter.company}</h1>
+               <p class="designation  text-[#64748B] text-[22px]">${inter.designation}</p>
+             </div>
+               <h1 class="locationSalary  text-[#64748B] mt-[20px]">${inter.locationSalary}</h1>
+
+                <div>
+               <h1 class="status w-[113px] rounded-[4px] text-[14px] bg-green-500 text-[#ffff] font-medium bg-[#002C5C]/10 py-[8px] px-[12px] mt-[20px]">${inter.status}</h1>
+               <p class="note  mt-[8px] text-[#323B49]text-[1.1rem]">${inter.note}</p>
+           </div>
 
 
-        <div class="mt-[20px] flex gap-4">
-            <button class="interBtn border-1 text-[#10B981] font-semibold text-[14px] border-[#10B981] hover:animate-pulse py-2 px-4 rounded-[4px]">INTERVIEW</button>
-            <button class="rejectBtn border-1 text-[#EF4444] font-semibold text-[14px] border-[#EF4444] py-2 px-4 rounded-[4px] hover:animate-pulse">REJECTED</button>
-        </div>
-        </div>
+           <div class="mt-[20px] flex gap-4">
+               <button class="interBtn border-1 text-[#10B981] font-semibold text-[14px] border-[#10B981] hover:animate-pulse py-2 px-4 rounded-[4px]">INTERVIEW</button>
+               <button class="rejectBtn border-1 text-[#EF4444] font-semibold text-[14px] border-[#EF4444] py-2 px-4 rounded-[4px] hover:animate-pulse">REJECTED</button>
+           </div>
+           </div>
 
-        <div>
-            <button>
-                <h1 class="hover:text-red-700 hover:border-red-700 bg-white p-1 rounded-full text-[1.5rem] text-[#64748B] border-2 border-[#64748B]"><i class="dltBtn fa-regular fa-trash-can"></i></h1>
-            </button>
-        </div>`
-        filterSection.appendChild(div);
-}
+           <div>
+               <button>
+                   <h1 class="hover:text-red-700 hover:border-red-700 bg-white p-1 rounded-full text-[1.5rem] text-[#64748B] border-2 border-[#64748B]"><i class="dltBtn fa-regular fa-trash-can"></i></h1>
+               </button>
+           </div>`
+           filterSection.appendChild(div);
+        }
+     }
 }
 
 function renderReject(){
-     
-     filterSection.innerHTML = ''
-    // crating innerHtml
-    for (let reject of rejectList) {
+     filterSection.innerHTML = '';
 
-        let div = document.createElement('div');
-        div.className = 'card flex justify-between mt-4 p-8 bg-white rounded-[8px]'
-        div.innerHTML = `
-        <div>
+     if(rejectList.length < 1){
+        noAvailableJob.classList.remove('hidden');
+     } else {
+        noAvailableJob.classList.add('hidden');
+        for (let reject of rejectList) {
+
+            let div = document.createElement('div');
+            div.className = 'card flex justify-between mt-4 p-8 bg-white rounded-[8px]'
+            div.innerHTML = `
             <div>
-            <h1 class="companyName  text-[#002C5C] text-[26px] font-semibold">${reject.company}</h1>
-            <p class="designation  text-[#64748B] text-[22px]">${reject.designation}</p>
-          </div>
-            <h1 class="locationSalary  text-[#64748B] mt-[20px]">${reject.locationSalary}</h1>
+                <div>
+                <h1 class="companyName  text-[#002C5C] text-[26px] font-semibold">${reject.company}</h1>
+                <p class="designation  text-[#64748B] text-[22px]">${reject.designation}</p>
+              </div>
+                <h1 class="locationSalary  text-[#64748B] mt-[20px]">${reject.locationSalary}</h1>
 
-             <div>
-            <h1 class="status w-[113px] rounded-[4px] text-[14px] text-[#002C5C] font-medium bg-[#002C5C]/10 py-[8px] px-[12px] mt-[20px]">${reject.status}</h1>
-            <p class="note  mt-[8px] text-[#323B49]text-[1.1rem]">${reject.note}</p>
-        </div>
+                 <div>
+                <h1 class="status w-[113px] rounded-[4px] text-[14px] bg-red-500 text-[#ffff] font-medium bg-[#002C5C]/10 py-[8px] px-[12px] mt-[20px]">${reject.status}</h1>
+                <p class="note  mt-[8px] text-[#323B49]text-[1.1rem]">${reject.note}</p>
+            </div>
 
 
-        <div class="mt-[20px] flex gap-4">
-            <button class="interBtn border-1 text-[#10B981] font-semibold text-[14px] border-[#10B981] hover:animate-pulse py-2 px-4 rounded-[4px]">INTERVIEW</button>
-            <button class="rejectBtn border-1 text-[#EF4444] font-semibold text-[14px] border-[#EF4444] py-2 px-4 rounded-[4px] hover:animate-pulse">REJECTED</button>
-        </div>
-        </div>
+            <div class="mt-[20px] flex gap-4">
+                <button class="interBtn border-1 text-[#10B981] font-semibold text-[14px] border-[#10B981] hover:animate-pulse py-2 px-4 rounded-[4px]">INTERVIEW</button>
+                <button class="rejectBtn border-1 text-[#EF4444] font-semibold text-[14px] border-[#EF4444] py-2 px-4 rounded-[4px] hover:animate-pulse">REJECTED</button>
+            </div>
+            </div>
 
-        <div>
-            <button>
-                <h1 class="hover:text-red-700 hover:border-red-700 bg-white p-1 rounded-full text-[1.5rem] text-[#64748B] border-2 border-[#64748B]"><i class="dltBtn fa-regular fa-trash-can"></i></h1>
-            </button>
-        </div>`
-        filterSection.appendChild(div);
-}
+            <div>
+                <button>
+                    <h1 class="hover:text-red-700 hover:border-red-700 bg-white p-1 rounded-full text-[1.5rem] text-[#64748B] border-2 border-[#64748B]"><i class="dltBtn fa-regular fa-trash-can"></i></h1>
+                </button>
+            </div>`
+            filterSection.appendChild(div);
+         }
+     }
 }
