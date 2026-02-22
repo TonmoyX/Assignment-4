@@ -121,14 +121,32 @@ mainContainer.addEventListener('click', function(e){
           if (currentStatus == 'reject-btn') {
             renderInter()
         }
-
          count();
     }
+
     else if(e.target.classList.contains('dltBtn')){
         const parenNode = e.target.parentNode.parentNode.parentNode.parentNode;
+        const company = parenNode.querySelector('.companyName').innerText;
+
+        // Remove from arrays
+        interList = interList.filter(item => item.company != company);
+        rejectList = rejectList.filter(item => item.company != company);
+
         parenNode.remove();
+        count();
+
+        // Re-render current view based on which section is active
+        if (filterSection.classList.contains('hidden') == false) {
+            if (currentStatus == 'interview-btn') {
+                renderInter();
+            } else if (currentStatus == 'reject-btn') {
+                renderReject();
+            }
+        }
     }
 })
+
+
 function renderInter(){
      filterSection.innerHTML = '';
 
