@@ -8,6 +8,7 @@ const headRejectCount = document.getElementById("headReject");
 const mainCount = document.getElementById("main-count");
 
 const mainContainer = document.querySelector('main');
+const noAvailableJob = document.getElementById('noAvailable');
 
 const allCardSection = document.getElementById('allCards');
 const filterSection = document.getElementById('filter-section');
@@ -119,6 +120,10 @@ mainContainer.addEventListener('click', function(e){
 
          count();
     }
+    else if(e.target.classList.contains('dltBtn')){
+        const parenNode = e.target.parentNode.parentNode.parentNode.parentNode;
+        parenNode.remove();
+    }
 })
 
 function renderInter(){
@@ -151,7 +156,7 @@ function renderInter(){
 
         <div>
             <button>
-                <h1 class="hover:text-red-700 hover:border-red-700 bg-white p-1 rounded-full text-[1.5rem] text-[#64748B] border-2 border-[#64748B]"><i class="fa-regular fa-trash-can"></i></h1>
+                <h1 class="hover:text-red-700 hover:border-red-700 bg-white p-1 rounded-full text-[1.5rem] text-[#64748B] border-2 border-[#64748B]"><i class="dltBtn fa-regular fa-trash-can"></i></h1>
             </button>
         </div>`
         filterSection.appendChild(div);
@@ -159,6 +164,7 @@ function renderInter(){
 }
 
 function renderReject(){
+     
      filterSection.innerHTML = ''
     // crating innerHtml
     for (let reject of rejectList) {
@@ -187,7 +193,7 @@ function renderReject(){
 
         <div>
             <button>
-                <h1 class="hover:text-red-700 hover:border-red-700 bg-white p-1 rounded-full text-[1.5rem] text-[#64748B] border-2 border-[#64748B]"><i class="fa-regular fa-trash-can"></i></h1>
+                <h1 class="hover:text-red-700 hover:border-red-700 bg-white p-1 rounded-full text-[1.5rem] text-[#64748B] border-2 border-[#64748B]"><i class="dltBtn fa-regular fa-trash-can"></i></h1>
             </button>
         </div>`
         filterSection.appendChild(div);
