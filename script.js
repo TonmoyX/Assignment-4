@@ -66,13 +66,13 @@ mainContainer.addEventListener('click', function(e){
         const note = parenNode.querySelector('.note').innerText
 
         parenNode.querySelector('.status').innerText = 'Interview';
-        parenNode.querySelector('.status').classList.remove('bg-[#002C5C]/10', 'text-[#002C5C]');   
+        parenNode.querySelector('.status').classList.remove('bg-[#002C5C]/10', 'text-[#002C5C]');
         parenNode.querySelector('.status').classList.add('bg-green-500', 'text-[#ffff]');
 
         const cardInfo = {
-            company, 
-            designation, 
-            locationSalary, 
+            company,
+            designation,
+            locationSalary,
             status: 'Interview',
             note
         }
@@ -82,6 +82,17 @@ mainContainer.addEventListener('click', function(e){
         }
 
         rejectList = rejectList.filter(item => item.company != cardInfo.company);
+
+        // Update status in allCardSection
+        const allCards = allCardSection.querySelectorAll('.card');
+        for (let card of allCards) {
+            if (card.querySelector('.companyName').innerText === company) {
+                card.querySelector('.status').innerText = 'Interview';
+                card.querySelector('.status').classList.remove('bg-[#002C5C]/10', 'text-[#002C5C]');
+                card.querySelector('.status').classList.add('bg-green-500', 'text-[#ffff]');
+                break;
+            }
+        }
 
         //current status from toogle style
           if (currentStatus == 'interview-btn') {
@@ -128,14 +139,12 @@ mainContainer.addEventListener('click', function(e){
         const parenNode = e.target.parentNode.parentNode.parentNode.parentNode;
         const company = parenNode.querySelector('.companyName').innerText;
 
-        // Remove from arrays
         interList = interList.filter(item => item.company != company);
         rejectList = rejectList.filter(item => item.company != company);
 
         parenNode.remove();
         count();
-
-        // Re-render current view based on which section is active
+        
         if (filterSection.classList.contains('hidden') == false) {
             if (currentStatus == 'interview-btn') {
                 renderInter();
