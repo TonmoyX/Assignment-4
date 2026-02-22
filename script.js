@@ -38,7 +38,6 @@ function toggle(id){
       select.classList.add('bg-[#3B82F6]', 'text-white');
       select.classList.remove('bg-white', 'text-[#64748B]');
 
-
       if (id == 'interview-btn') {
         allCardSection.classList.add('hidden');
         filterSection.classList.remove('hidden')
