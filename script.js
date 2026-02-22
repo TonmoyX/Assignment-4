@@ -196,6 +196,6 @@ function renderReject(){
                 <h1 class="hover:text-red-700 hover:border-red-700 bg-white p-1 rounded-full text-[1.5rem] text-[#64748B] border-2 border-[#64748B]"><i class="dltBtn fa-regular fa-trash-can"></i></h1>
             </button>
         </div>`
-        filterSection.appendChild(div);
+        filterSection.appendChild(div)  ;
 }
 }
